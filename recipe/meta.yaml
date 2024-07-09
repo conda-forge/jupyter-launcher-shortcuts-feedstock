@@ -37,6 +37,7 @@ test:
     - pip
 
 about:
+  home: https://github.com/2i2c-org/jupyter-launcher-shortcuts
   summary: Provide arbitrary shortcuts for apps in JupyterLab
   license: BSD-3-Clause
   license_file:
