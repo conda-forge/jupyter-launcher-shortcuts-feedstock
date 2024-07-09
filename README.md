@@ -3,11 +3,11 @@ About jupyter-launcher-shortcuts-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jupyter-launcher-shortcuts-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/yuvipanda/jupyter-launcher-shortcuts
+Home: https://github.com/2i2c-org/jupyter-launcher-shortcuts
 
 Package license: BSD-3-Clause
 
-Summary: Easily place shortcuts
+Summary: Provide arbitrary shortcuts for apps in JupyterLab
 
 Current build status
 ====================
