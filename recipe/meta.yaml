@@ -1,29 +1,32 @@
 {% set name = "jupyter-launcher-shortcuts" %}
-{% set version = "4.0.2" %}
-
+{% set version = "4.0.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: d78f4c9189c03b601cd187c925dbabd0b24213b5167ec28ea3f03bcbc9d8ef3c
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyter_launcher_shortcuts-{{ version }}.tar.gz
+  sha256: 147631fcaecb2c00a175cf92526fd32702959e2b93fc6609f8fd679536be9ff8
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
+    - python >=3.8
+    - hatchling >=1.5.0
+    - jupyterlab >=4.0.0,<5
+    - hatch-nodejs-version >=0.3.2
     - pip
-    - python >=3.5
   run:
-    - aiohttp
-    - notebook
-    - python >=3.5
-    - simpervisor
+    - python >=3.8
+    - jupyter_server
+    - jupyterlab >=4,<5
+    - tornado
+    - traitlets
 
 test:
   imports:
@@ -34,10 +37,11 @@ test:
     - pip
 
 about:
-  home: https://github.com/yuvipanda/jupyter-launcher-shortcuts
-  summary: Easily place shortcuts
+  summary: Provide arbitrary shortcuts for apps in JupyterLab
   license: BSD-3-Clause
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - labextension/LICENSE
 
 extra:
   recipe-maintainers:
