@@ -6,24 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/jupyter_launcher_shortcuts-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jupyter_launcher_shortcuts-{{ version }}.tar.gz
   sha256: 147631fcaecb2c00a175cf92526fd32702959e2b93fc6609f8fd679536be9ff8
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - hatchling >=1.5.0
     - hatch-jupyter-builder >=0.9.1
     - jupyterlab >=4.0.0,<5
     - hatch-nodejs-version >=0.3.2
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - jupyter_server
     - jupyterlab >=4,<5
     - tornado
@@ -36,6 +36,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/2i2c-org/jupyter-launcher-shortcuts
